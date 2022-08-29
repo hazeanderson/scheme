@@ -1,0 +1,17 @@
+import unittest
+from schemer.common import lat
+
+class TestLoad(unittest.TestCase):
+
+    def test_lat(self):
+        mylist = ["apple", "banana", "cherry"]
+        mycopy = mylist.copy()
+        self.assertEqual( lat(mylist), True, 'lat is a lat' )
+        self.assertEqual( lat(['a','b','c']), True, 'lat is a lat' )
+        self.assertEqual( lat(['a',None,'c']), True, 'lat with empty element is not a lat' )
+        self.assertEqual( lat(['a',mylist,'c']), True, 'lat that contains another list is not a lat' )
+        self.assertEqual( lat('not a list'), False, 'atom is not a lat' )
+        self.assertEqual( mylist, mycopy, 'list has not changed' )
+
+if __name__ == '__main__':
+    unittest.main()
