@@ -1,25 +1,23 @@
 __version__='0.0.1'
 
-# x is an atom
-def atom(x):
-    return not isinstance(x, list) and x is not None
+# s_expr is an atom
+def atom(s_expr):
+    return not isinstance(s_expr, list) and s_expr is not None
 
 # lat is empty
-# TODO: should we check for None?
 def null(lat):
-    return not len(lat)
+    return isinstance(lat, list) and not len(lat) and lat is not None
 
-# construct new lat with x and lat
-def cons(x, lat):
+# construct new lat with at and lat
+def cons(at, lat):
     new_list = lat.copy()
-    new_list.insert(0, x) #TODO: how is this flattening lists? (or not)
+    new_list.insert(0, at)
     return new_list
 
 # return first atom in lat
-# TODO: could we do better here?
-def car(lat):
-    if isinstance(lat, list):
-        return lat[0]
+def car(s_expr):
+    if not atom(s_expr):
+        return s_expr[0]
 
 # return all of lat without its first atom
 def cdr(lat):
@@ -28,29 +26,26 @@ def cdr(lat):
         new_list.pop(0)
     return new_list
 
-# x is a lat
-def lat(x):
-    #if isinstance(x, list) and not null(x): TODO remove me
-    # TODO: refactor such that null() may be called instead
-    if not atom(x):
+# s_expr is a lat
+def lat(s_expr):
+    if null(s_expr):
         return True
-    elif atom(car(x)):
-        return lat(cdr(x))
+    elif atom(car(s_expr)):
+        return lat(cdr(s_expr))
     else:
         return False
 
 # lat contains at least one occurance of a
-def member(a, lat):
+def member(at, lat):
     if null(lat):
         return False
     else:
-        # TODO: rewrite to not use that or 
-        return car(lat) == a or member(a, cdr(lat))
+        return car(lat) == at or member(at, cdr(lat))
 
 # remove first occurance of a from lat
 def rember(a, lat):
     if null(lat):
-        return [] # TODO: why an empty list and not False?
+        return []
     elif car(lat) == a:
         return cdr(lat)
     else:
