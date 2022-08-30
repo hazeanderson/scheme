@@ -39,42 +39,44 @@ def lat(s_expr):
 def member(at, lat):
     if null(lat):
         return False
+    elif car(lat) == at:
+        return True
     else:
-        return car(lat) == at or member(at, cdr(lat))
+        return member(at, cdr(lat))
 
 # remove first occurance of a from lat
-def rember(a, lat):
+def rember(at, lat):
     if null(lat):
         return []
-    elif car(lat) == a:
+    elif car(lat) == at:
         return cdr(lat)
     else:
-        return cons(car(lat), rember(a, cdr(lat)))
+        return cons(car(lat), rember(at, cdr(lat)))
 
 # return new lat containing first elements from lat's lats
-def firsts(lat):
-    if null(lat):
+def firsts(lolat):
+    if null(lolat):
         return []
     else:
-        return cons(car(car(lat)), firsts(cdr(lat)))
+        return cons(car(car(lolat)), firsts(cdr(lolat)))
 
-# insert new atom into lat, to the left of first occurance of old
-def insertL(new, old, lat):
+# insert new atom into lat, to the left of first occurance of target
+def insertL(new, target, lat):
     if null(lat):
         return []
-    elif car(lat) == old:
-        return cons(new, cons(old, cdr(lat)))
+    elif car(lat) == target:
+        return cons(new, cons(target, cdr(lat)))
     else:
-        return cons(car(lat), insertL(new, old, cdr(lat)))
+        return cons(car(lat), insertL(new, target, cdr(lat)))
 
-# insert new atom into lat, to the right of first occurance of old
-def insertR(new, old, lat):
+# insert new atom into lat, to the right of first occurance of target
+def insertR(new, target, lat):
     if null(lat):
         return []
-    elif car(lat) == old:
-        return cons(old, cons(new, cdr(lat)))
+    elif car(lat) == target:
+        return cons(target, cons(new, cdr(lat)))
     else:
-        return cons(car(lat), insertR(new, old, cdr(lat)))
+        return cons(car(lat), insertR(new, target, cdr(lat)))
 
 # replace first occurance of old in lat with new
 def subst(new, old, lat):
