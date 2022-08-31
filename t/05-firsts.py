@@ -20,4 +20,4 @@ class TestLoad(unittest.TestCase):
         self.assertEqual( mylist, mycopy, 'lat has not changed' )
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)
