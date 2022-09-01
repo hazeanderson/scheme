@@ -1,5 +1,5 @@
 import unittest
-from schemer.chapter01 import( atom, null, cons, car, cdr )
+from schemer.primitives import( atom, null, cons, car, cdr )
 
 
 class TestLoad(unittest.TestCase):

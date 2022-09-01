@@ -1,5 +1,5 @@
 __version__='0.0.1'
-#from schemer.chapter01 import( atom, null, cons, car, cdr )
+#from schemer.primitives import( atom, null, cons, car, cdr )
 
 def plus(n, m):
     if not isinstance(m, int):
