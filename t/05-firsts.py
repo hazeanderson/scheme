@@ -1,5 +1,5 @@
 import unittest
-from schemer.common import firsts
+from schemer.chapter03 import firsts
 
 class TestLoad(unittest.TestCase):
 

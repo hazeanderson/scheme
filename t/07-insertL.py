@@ -1,5 +1,5 @@
 import unittest
-from schemer.common import(insertL, multiinsertL)
+from schemer.chapter03 import(insertL, multiinsertL)
 
 class TestLoad(unittest.TestCase):
 

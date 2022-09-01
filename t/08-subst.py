@@ -1,5 +1,5 @@
 import unittest
-from schemer.common import(subst, subst2, multisubst)
+from schemer.chapter03 import(subst, subst2, multisubst)
 
 class TestLoad(unittest.TestCase):
 
