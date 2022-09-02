@@ -1,5 +1,5 @@
 __version__='0.0.1'
-#from schemer.primitives import( atom, null, cons, car, cdr )
+from schemer.primitives import( null, tup, car, cdr )
 
 def plus(n, m):
     if not isinstance(m, int):
@@ -32,3 +32,12 @@ def sub1(n):
         return n - 1
     else:
         return 0
+
+def addtup(tupl):
+    if null(tupl):
+        return 0
+    else:
+        return plus(car(tupl), addtup(cdr(tupl)))
+
+
+
