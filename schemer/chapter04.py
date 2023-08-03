@@ -10,6 +10,15 @@ def plus(n, m):
     else:
         return add1(plus(n, sub1(m)))
 
+def multiply(n, m):
+    if not isinstance(m, int):
+        return n
+
+    if m == 0:
+        return 0
+    else:
+        return plus(n, multiply(n, sub1(m)))
+
 
 def minus(n, m):
     if not isinstance(m, int):
